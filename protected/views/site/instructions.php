@@ -1,7 +1,7 @@
-<h1 name="accessing-service">Instructions for using the OCR Transcription Service</h1>
+<h1 name="accessing-service">Instructions for using the <?php echo Yii::app()->name; ?> Transcription Service</h1>
 
 <div class="article">
-    The OCR Tool is designed to help clean, rotate, and properly align PDF scans. PDF scans that are very poor quality will not OCR properly.
+    The <?php echo Yii::app()->name; ?> Transcription Service is designed to help clean, rotate, and properly align PDF scans. PDF scans that are very poor quality will not OCR properly. This is an automated system using a third-party OCR application called ABBYY. Use of this service is free for Arts &amp; Science students and faculty.
 </div>
 
 <h2>Accessing and Using the OCR Service</h2>
@@ -79,6 +79,10 @@
         <li>
             <div class="term">My file was deleted somehow. Is there a backup?</div>
             <div class="definition">No. We do not keep backups of PDF's. If your file was deleted, you must re-upload the file.</div>
+        </li>
+        <li>
+            <div class="term">I am not affiliated with the Arts &amp; Sciences college. Can I still use the Readify! OCR Service?</div>
+            <div class="definition">Yes, you may still use the service but will be limited to only a few PDF scans a day. People affiliated with the Arts &amp; Sciences college have no restrictions.</div>
         </li>
     </ul>
 </div>

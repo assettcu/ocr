@@ -1,35 +1,21 @@
 <?php
-
-function formatBytes($bytes, $precision = 2) { 
-    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
-
-    $bytes = max($bytes, 0); 
-    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
-    $pow = min($pow, count($units) - 1); 
-
-    // Uncomment one of the following alternatives
-    // $bytes /= pow(1024, $pow);
-    $bytes /= (1 << (10 * $pow)); 
-
-    return round($bytes, $precision) . ' ' . $units[$pow]; 
-} 
-
+StdLib::set_debug_state("Dev");
 $manager = new Manager();
 $ncfiles = $manager->load_files("NC");
 $files = $manager->load_files("C");
-
-# Yii::app()->user->setFlash('success',"The OCR has completed maintenance and is working normally again.");
 
 $flashes = new Flashes;
 $flashes->render();
 ?>
 
 <!-- Load Queue widget CSS and jQuery -->
-<style type="text/css">@import url(//<?php echo Yii::app()->params["LOCALAPP_SERVER"]; ?>/libraries/javascript/jquery/modules/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css);</style>
+<style type="text/css">
+    @import url(//<?php echo WEB_LIBRARY_PATH; ?>/jquery/modules/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css);
+</style>
 
 <!-- Load plupload and all it's runtimes and finally the jQuery queue widget -->
-<script type="text/javascript" src="//<?php echo Yii::app()->params["LOCALAPP_SERVER"]; ?>/libraries/javascript/jquery/modules/plupload/js/plupload.full.js"></script>
-<script type="text/javascript" src="//<?php echo Yii::app()->params["LOCALAPP_SERVER"]; ?>/libraries/javascript/jquery/modules/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script type="text/javascript" src="//<?php echo WEB_LIBRARY_PATH; ?>/jquery/modules/plupload/js/plupload.full.js"></script>
+<script type="text/javascript" src="//<?php echo WEB_LIBRARY_PATH; ?>/jquery/modules/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 
 <div class="main-frame">
 
@@ -210,7 +196,7 @@ jQuery(document).ready(function($){
     });
     
   
-  $("#upload-file-button").click(function(){
+  $(document).on('click',"#upload-file-button",function(){
     $("#upload-dialog").dialog("open");
     return false;
   });
@@ -254,14 +240,14 @@ jQuery(document).ready(function($){
   
   $("#stats-dialog").dialog({
     "autoOpen":   false,
-    "modal":      true,
+    "modal":      false,
     "width":      340,
     "height":     160,
     "draggable":  true,
     "resizable":  false
   });
   
-  $("#processed-mass-reprocess").click(function(){
+  $(document).on('click',"#processed-mass-reprocess",function(){
     if($("input[type='checkbox'][name='processed-boxes']:checked").length==0) return false;
     var ids = "";
     $.each($("input[type='checkbox'][name='processed-boxes']:checked"),function(index){
@@ -277,7 +263,7 @@ jQuery(document).ready(function($){
     });
   });
   
-  $("#queued-mass-remove").click(function(){
+  $(document).on('click',"#queued-mass-remove",function(){
     if($("input[type='checkbox'][name='queued-boxes']:checked").length==0) return false;
     var ids = "";
     $.each($("input[type='checkbox'][name='queued-boxes']:checked"),function(index){
@@ -293,14 +279,14 @@ jQuery(document).ready(function($){
     });
   });
   
-  $("#processed-mass-remove").click(function(){
+  $(document).on('click',"#processed-mass-remove",function(){
     if($("input[type='checkbox'][name='processed-boxes']:checked").length==0) return false;
     $("#num-selected").html($("input[type='checkbox'][name='processed-boxes']:checked").length);
     $("#remove-mass-dialog").dialog("open");
      $('.ui-dialog :button').blur();
   });
   
-  $("#processed-mass-download").click(function(){
+  $(document).on('click',"#processed-mass-download",function(){
     if($("input[type='checkbox'][name='processed-boxes']:checked").length==0) return false;
     if($("input[type='checkbox'][name='processed-boxes']:checked").length==1)
     {
@@ -317,19 +303,19 @@ jQuery(document).ready(function($){
     
   });
   
-  $(".download-button").live('click',function(){
+  $(document).on('click',".download-button",function(){
     window.location = "<?=Yii::app()->createUrl('download')?>?fileid="+$(this).attr('value');
     return false;
   });
   
-  $("#checkall-queued").change(function(){
+  $(document).on('change',"#checkall-queued",function(){
     if($(this).is(":checked")){
       $("input[type='checkbox'][name='queued-boxes']").attr('checked','checked');
     } else {
       $("input[type='checkbox'][name='queued-boxes']").removeAttr('checked');
     }
   });
-  $("#checkall-processed").change(function(){
+  $(document).on('change',"#checkall-processed",function(){
     if($(this).is(":checked")){
       $("input[type='checkbox'][name='processed-boxes']").attr('checked','checked');
     } else {

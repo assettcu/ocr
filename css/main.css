@@ -16,7 +16,7 @@ body
 }
 
 #header {
-	background: url("../images/university_of_colorado_white_ocr.png") no-repeat scroll left top #FFFFFF;
+	background: url("../library/images/university_of_colorado_white_ocr.png") no-repeat scroll left top #FFFFFF;
 	color: #f0f0f0;
 	clear: both;
 	height:80px;
@@ -44,11 +44,8 @@ body
 	font-size: 0.9em;
 	text-align: center;
 	padding: 10px;
-	border-top: 1px solid #0e4b97;
+	border-top: 3px solid #ccc;
 	margin: 0px;
-}
-
-#footer-links {
 }
 
 #assett-logo {
@@ -57,7 +54,7 @@ body
 	left: 15px;
 	width: 153px;
 	height: 55px;
-	background-image: url("../images/small_assett_logo.png");
+	background-image: url("../library/images/small_assett_logo.png");
 	background-repeat: no-repeat;
 	margin-right: 10px;
 }
@@ -161,6 +158,7 @@ button {
 	padding:5px 10px;
 	cursor:pointer;
 }
+
 button:disabled {
 	background-color:#f0f0f0;
 	border:1px solid #aaa;
@@ -175,6 +173,13 @@ button:disabled {
 	margin-top:2px;
 	width:250px;
 	margin-bottom:5px;
+}
+
+#login {
+    width:400px;
+    float:right;
+    text-align:right;
+    padding:5px;
 }
 
 .lalign {
@@ -204,6 +209,12 @@ button:disabled {
 .image-container {
 	padding:5px;
 	line-height: 1.5em;
+}
+.image-container.ocr-logo {
+	float:left;
+	display:block;
+	width:110px;
+	text-align:center;
 }
 div.icon-wrapper {
 	float:left;

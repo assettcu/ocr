@@ -1,21 +1,13 @@
 <?php
-/**
- * Login page
- */
-$this->pageTitle="OCR Service";
-
-$imager = new Imager("images/lock.png");
-$imager->width = "16px";
-$imager->height = "16px";
-$imager->attributes["title"] = "This password is passed through 128-bit AES encryption for authentication.";
+$this->pageTitle="Readify!";
 
 $flashes = new Flashes();
 $flashes->render();
 ?>
 
-<div style="margin-top:25px;">
-    <div class="image-container" style="float:left;display:block;width:110px;text-align:center;">
-    	<img src="<?=Yii::app()->baseUrl?>/images/ocr.png" alt="Optical Character Recognition Service" />
+<div style="margin-top:10px;">
+    <div class="image-container ocr-logo">
+    	<img src="<?php echo StdLib::load_image_source("ocr",""); ?>" alt="Optical Character Recognition Service" />
     </div>
     <div class="text-container" style="float:left;display:block;width:750px;margin-bottom: 25px; font-size:14px;">
     	<h1>Welcome to the Optical Character Recognition Service</h1>
@@ -36,7 +28,7 @@ $flashes->render();
             <tr>
                 <th><div <?php echo ($error == "password") ? 'class="error"' : ''; ?>>  <span class="icon icon-key2"> </span> Identikey Password</div></th>
                 <td>
-                    <input type="password" name="password" id="password" value="" /> <?php $imager->render(); ?>
+                    <input type="password" name="password" id="password" value="" /> <img src="<?php echo StdLib::load_image_source("lock"); ?>" title="This password is passed through 128-bit AES encryption for authentication." width="16px" height="16px" />
                 </td>
             </tr>
             <tr>
