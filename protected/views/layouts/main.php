@@ -1,12 +1,16 @@
 <?php
 // Theme name from Jquery UI themes
 $theme = "bluebird";
+$this->pageTitle = "Readify! OCR Service";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
+	
+    <link rel="shortcut icon" href="<?php echo WEB_IMAGE_LIBRARY; ?>/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo WEB_IMAGE_LIBRARY; ?>/favicon.ico" type="image/x-icon">
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
@@ -21,11 +25,11 @@ $theme = "bluebird";
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/<?php echo Yii::app()->params["JQUERY_VERSION"]; ?>/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/<?php echo Yii::app()->params["JQUERYUI_VERSION"]; ?>/jquery-ui.min.js" type="text/javascript"></script>
 
-	<script src="https://compass.colorado.edu/libraries/javascript/jquery/modules/cookie/jquery.cookie.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="https://compass.colorado.edu/libraries/javascript/jquery/jquery-ui/themes/<?=$theme?>/jquery-ui.css" type="text/css" />
+	<script src="<?php echo WEB_LIBRARY_PATH; ?>/jquery/modules/cookie/jquery.cookie.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="<?php echo WEB_LIBRARY_PATH; ?>/jquery/themes/<?php echo $theme; ?>/jquery-ui.css" type="text/css" />
 	
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -51,14 +55,6 @@ $theme = "bluebird";
 <div class="container" id="page">
 
 	<a href="<?php echo Yii::app()->baseUrl; ?>"><div id="header"></div></a><!-- header -->
-	<style>
-	    #login {
-	        width:400px;
-	        float:right;
-	        text-align:right;
-	        padding:5px;
-	    }
-	</style>
 	<div id="login">
 	    Welcome, <?php echo Yii::app()->user->name; ?> - 
 	    <?php if(Yii::app()->user->isGuest): ?>
