@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submitbox header="true" content="true" table="true">
+	<header>
+		<options padding="1px" padding-left="10px" margin-bottom="3px" text-align="center"></options>
+	</header>
+	<content>
+		<options padding="5px" font-size="12px"></options>
+	</content>
+	<container>
+		<options padding="1px" margin-right="0px" margin-bottom="5px"></options>
+	</container>
+</submitbox>

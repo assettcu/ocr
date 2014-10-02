@@ -1,0 +1,64 @@
+
+h1 { 
+    padding-bottom: 15px; 
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 30px; 
+    color: #333; 
+}
+
+div.help-section {
+    font-size:15px;
+    padding:5px 0px;
+    margin-bottom:10px;
+}
+div.article {
+    font-size:14px;
+    color:#555;
+    padding:10px;
+    border:1px dotted #ccc;
+    border-radius:5px;
+    margin-bottom:25px;
+}
+div.article ol {
+    margin-left:15px;
+    margin-bottom:5px;
+    margin-top:5px;
+}
+div.article a.anchor {
+    color:#777;
+    text-decoration:none;
+    border-bottom:1px dotted #000;
+}
+div.article ul {
+    list-style-type:none;
+    margin:5px;
+    padding:0;
+}
+div.article ul li {
+    margin-bottom:14px;
+    padding-left:15px;
+}
+div.article div.term {
+    font-weight:bold;
+    font-style:italic;
+    color:#555;
+}
+div.article div.definition {
+    padding-left:20px;
+}
+table#post-form-table {
+	border-spacing:3px; 
+	border:1px dotted #ccc; 
+	padding:10px; 
+	border-radius:5px;
+}
+table#post-form-table input {
+	padding:3px;
+}
+.main-frame .title {
+	font-size:24px;
+	margin-bottom:5px;
+}
+.ocr-container {
+	margin-bottom:30px;
+}

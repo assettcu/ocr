@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schedule header="true" content="true" table="true">
+	<header>
+		<options background-color="#09f" font-size="15px" color="#fff" text-align="center"></options>
+	</header>
+	<content>
+		<options background-color="#f0f0f0" height="16px" text-align="center"></options>
+	</content>
+	<table>
+		<options border-spacing="4px"></options>
+	</table>
+</schedule>

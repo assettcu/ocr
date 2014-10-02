@@ -1,0 +1,597 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #555;
+	font: normal 10pt;
+	font-family: Verdana, Geneva, sans-serif;
+	background: #fff;
+}
+
+#page
+{
+	margin-bottom: 20px;
+	background: white;
+	border-top:none;
+}
+
+#header {
+	background: url("../images/university_of_colorado_white_ocr.png") no-repeat scroll left top #FFFFFF;
+	color: #f0f0f0;
+	clear: both;
+	height:80px;
+	margin: 0;
+	margin-top:10px;
+	position: relative;
+	width: 100%;
+	border-bottom:3px solid #ccc;
+}
+
+#content
+{
+    padding: 20px;
+}
+
+#sidebar
+{
+	padding: 20px 20px 20px 0;
+}
+
+#footer {
+	position: relative;
+	background-color: #fff;
+	color: #000;
+	font-size: 0.9em;
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid #0e4b97;
+	margin: 0px;
+}
+
+#footer-links {
+}
+
+#assett-logo {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 153px;
+	height: 55px;
+	background-image: url("../images/small_assett_logo.png");
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+
+#assett-logo a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#assett-logo a span {
+	opacity:0;
+}
+
+#logo {
+	background: #1756a2;
+	background: -moz-linear-gradient(top,  #1756a2 0%, #2261af 20%, #5698ea 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1756a2), color-stop(20%,#2261af), color-stop(100%,#5698ea));
+	background: -webkit-linear-gradient(top,  #1756a2 0%,#2261af 20%,#5698ea 100%);
+	background: -o-linear-gradient(top,  #1756a2 0%,#2261af 20%,#5698ea 100%);
+	background: -ms-linear-gradient(top,  #1756a2 0%,#2261af 20%,#5698ea 100%);
+	background: linear-gradient(to bottom,  #1756a2 0%,#2261af 20%,#5698ea 100%);
+}
+
+#logo-text {
+	font-size: 200%;
+	width:400px;
+	display:inline-block;
+	padding: 3px 20px;
+}
+
+label {
+	font-weight:bold;
+	width:180px;
+	display:inline-block;
+	float:left;
+}
+
+#mainmenu
+{
+	float:right;
+	display:block;
+}
+
+#mainmenu a {
+	font-size:13px;
+	display:block;
+	float:right;
+	line-height:42px;
+	color: #fff;
+	text-decoration: none;
+	border-left:1px solid #fff;
+	padding-left:10px;
+	padding-right:10px;
+	cursor:pointer;
+	margin:0px;
+}
+
+#mainmenu a:hover {
+	background-image:url(../images/bg-header-hover.png);
+	color:#000;
+}
+
+#assettlogo {
+	background-image:url(../images/small_assett_logo.png);
+	background-repeat: no-repeat;
+	width:220px;
+	height:52px;
+	margin-right:10px;
+	margin-top:5px;
+	margin-bottom:20px;
+	float:left;
+}
+
+#logo
+{
+	background-image:url(../images/bg-header.png);
+	background-repeat:repeat-x;
+	min-height: 42px;
+}
+
+#logo-text
+{
+	font-family:  Gill Sans MT, sans-serif;
+	font-variant: small-caps;
+	font-size: 180%;
+	width:400px;
+	display:inline-block;
+	padding: 3px 20px;
+}
+
+div.form .rememberMe label
+{
+	display: inline;
+}
+
+button {
+	background-color:#fff;
+	border:1px solid #aaa;
+	color:#555;
+	padding:5px 10px;
+	cursor:pointer;
+}
+button:disabled {
+	background-color:#f0f0f0;
+	border:1px solid #aaa;
+	color:#555;
+	padding:5px 10px;
+}
+
+.txtbox {
+	font-size:12px;
+	padding:3px;
+	border:1px solid #ccc;
+	margin-top:2px;
+	width:250px;
+	margin-bottom:5px;
+}
+
+.lalign {
+	text-align:left;
+}
+.calign {
+	text-align:center;
+}
+.ralign {
+	text-align:right;
+}
+
+.tvalign {
+	vertical-align: top;
+}
+.mvalign {
+	vertical-align: middle;
+}
+.bvalign {
+	vertical-align: bottom;
+}
+
+.error {
+	padding: 5px;
+}
+
+.image-container {
+	padding:5px;
+	line-height: 1.5em;
+}
+div.icon-wrapper {
+	float:left;
+	margin-top:-2px;
+	margin-right:4px;
+	padding-top:1px;
+}
+span.ui-icon {
+	display:inline-block;
+}
+a {
+	color:#06c;
+	text-decoration:none;
+}
+a:hover {
+	color:#000;
+	text-decoration:underline;
+}
+h1 {
+	font-size:22px;
+	padding-bottom:5px;
+	color:#444;
+}
+h2 {
+	font-size:18px;
+	padding-bottom:3px;
+	margin-bottom:5px;
+	color:#555;
+}
+h4 {
+	font-size:15px;
+	padding-bottom:5px;
+	color:#555;
+	margin-bottom:5px;
+}
+div.projects-list
+{
+	margin-top:20px;
+}
+div.project-title
+{
+	font-weight:bold;
+}
+div.project-outline
+{
+	margin:20px 0px;
+	padding:10px;
+	border:2px solid #23aa6f;
+	border-radius:4px;
+}
+div.project-outline:hover
+{
+	cursor:pointer;
+}
+div.menu-container {
+	text-align: right;
+	width:100%;
+}
+
+div.main-content {
+	margin-top:25px;
+}
+div.report-box {
+	display:inline;
+	float:left;
+}
+div.image-box {
+	margin-right:25px;
+}
+div.report-box div.header {
+	font-size:15px;
+	color:#f63;
+}
+div.report-box div.content {
+	font-size:12px;
+	color:#444;
+}
+div.choose-box {
+	cursor:pointer;
+}
+table.formtable {
+	border-collapse:collapse;
+}
+table.formtable tbody tr:hover {
+  background-color:#efe;
+  cursor:pointer;
+}
+table.formtable thead th,
+table.formtable tfoot th {
+	background-color:#9df;
+	color:#333;
+	font-size:12px;
+	font-weight:bold;
+	border:1px solid #09f;
+	font-style:normal;
+}
+table.formtable tbody tr td {
+	border:1px solid #ccc;
+}
+table.formtable .even {
+	background-color: #FFFFFF;
+}
+table.formtable .odd {
+	background-color: #D0F0FF;
+}
+table.formtable tr.even.disable-hover:hover {
+	background-color: #FFFFFF;
+}
+table.formtable tr.odd.disable-hover:hover {
+	background-color: #D0F0FF;
+}
+table.formtable tbody tr.selected td{
+  background-color:#afa;
+  cursor:default;
+}
+table.formtable tbody tr.disabled td {
+	background-color:#eee;
+	cursor:default;
+}
+table.formtable tbody tr td:first-child {
+  background-color:#fee;
+  cursor:pointer;
+}
+table.formtable tbody tr.disable-hover td:first-child {
+  background-color:#fee;
+  cursor:default;
+}
+table.formtable tbody tr.disable-hover:hover {
+	background-color: inherit;
+	cursor: default;
+}
+table.formtable thead tr.header th {
+	background-color:#9F9;
+	color:#09F;
+	font-weight:bold;
+	color:#333;
+	padding:5px;
+}
+/* 	RESULT STYLE  */
+.testresult{
+	font-weight: bold;
+	font-size:13px;
+	font-family: arial,helvetica,san-serif;
+	color:#666;
+	padding:0px 0px 12px 10px;
+	margin-left:10px;
+	display: block;
+	height:28px;
+	float:left;
+}
+.testresult span{
+	padding:3px 20px 12px 10px;
+	margin: 0px 0px 0px 20px;
+	display:block;
+	float:right;
+	white-space: nowrap;
+}
+.shortPass{
+	background:url(images/red.png) no-repeat 0 0;
+}
+.shortPass span{
+	background:url(images/red.png) no-repeat top right;
+}
+.badPass{
+	background:url(images/red.png) no-repeat 0 0;
+}
+.badPass span{
+	background:url(images/red.png) no-repeat top right;
+}
+.goodPass{
+	background:url(images/yellow.png) no-repeat 0 0;
+}
+.goodPass span{
+	background:url(images/yellow.png) no-repeat top right;
+}
+.strongPass{
+	background:url(images/green.png) no-repeat 0 0;
+}
+.strongPass span{
+	background:url(images/green.png) no-repeat top right;
+}
+
+/* NEW FORM CSS */
+div.menubar {
+	float:right;
+	display:block;
+}
+div.img-container
+{
+	display:inline;
+	line-height:16px;
+	text-align:center;
+	width:16px;
+}
+div.img-container img {
+	vertical-align: top;
+}
+div.text-container
+{
+	display:block;
+	margin-top: -5px;
+}
+div.input-container
+{
+	margin-bottom:10px;
+}
+ol.sortable
+{
+	font-size:20px;
+}
+ol.sortable li {
+	border:1px solid #000;
+	border-radius:5px;
+	padding:10px;
+	padding-top:28px;
+	margin-bottom:10px;
+	background-color:#fff;
+	position: relative;
+}
+div.question-container {
+	font-size:12px;
+}
+div.question {
+	font-size:16px;
+}
+div.toolbar {
+	position: absolute;
+	top:0px;
+	right:0px;
+	padding:3px;
+	font-size:12px;
+	border:1px hidden;
+	border-left:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
+}
+div.question-header {
+	position: absolute;
+	top:0px;
+	left:0px;
+	padding:3px;
+	width:150px;
+	font-size:12px;
+	text-align: center;
+	padding-right:10px;
+	border:1px hidden;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	-moz-border-radius-bottomright: 50px;
+	border-bottom-right-radius: 50px;
+	cursor:move;
+}
+div.bg-orange {
+	background-color:#F90;
+	color:#fff;
+	font-weight:bold;
+}
+div.bg-red {
+	background-color:#D00;
+	color:#fff;
+	font-weight:bold;
+}
+div.bg-blue {
+	background-color:#09F;
+	color:#fff;
+	font-weight:bold;
+}
+div.bg-green {
+	background-color:#0C0;
+	color:#fff;
+	font-weight:bold;
+}
+div.bg-white {
+	background-color:#FFF;
+	color:#222;
+	font-weight:bold;
+}
+#additional-options-button {
+	margin-bottom:10px;
+}
+#additional-options {
+	border:1px solid #ccc;
+	padding:10px;
+	border-radius:5px;
+	clear:both;
+}
+label {
+	width:auto;
+	margin-right:10px;
+	padding:3px;
+}
+
+img
+{
+  vertical-align: text-top;
+}
+div.qtextarea div img
+{
+  vertical-align: top;
+}
+#formlist {
+  font-size:13px;
+  color:#09f;
+}
+#formlist li {
+  margin:10px;
+  color:#222;
+}
+.qcontainer {
+}
+.qlabel {
+  font-weight:bold;
+  padding:3px;
+}
+.qdescription {
+  border:1px solid #ccc;
+  padding:5px;
+  border-radius:5px;
+  margin-bottom:7px;
+  background-color:#f0f0f0;
+}
+
+.txtbox {
+	font-size:12px;
+	padding:3px;
+	border:1px solid #ccc;
+	margin-top:2px;
+	width:250px;
+	margin-bottom:5px;
+}
+div.inlinetop {
+  display: inline-block;
+  vertical-align: top;
+}
+div.error-box {
+  padding:4px;
+  border-radius:3px;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+
+ul#services {
+	list-style: none;
+	padding-left: 3px;
+	font-size: 13px;
+	margin: 0px;
+}
+ul#services li a:hover {
+	color: #a00;
+	text-decoration: underline;
+}
+table#queued-files, table#processed-files {
+	width: 100%;
+}
+table#queued-files thead tr th, table#processed-files thead tr th {
+	margin: 0px;
+}
+button.download-button {
+	font-size: 11px;
+	padding: 0px;
+	margin: 0px;
+}
+div.container {
+	position: relative;
+	top: 0;
+}
+#upload-file-button {
+	position: absolute;
+	top: 10px;
+	left: 5px;
+}
+
+.subtitle {
+	font-size:13px;
+}
+
+.required {
+	color:#a00;
+	font-weight: bold;
+}
+
+div.flash {
+	padding:7px;
+	font-size: 13px;
+	margin-bottom:10px;
+	margin-top:5px;
+	padding-left:10px;
+	border-radius:5px;
+}
