@@ -1,52 +1,38 @@
 <?php
-$this->pageTitle="Readify!";
-
 $flashes = new Flashes();
 $flashes->render();
 ?>
 
 <div style="margin-top:10px;">
-    <div class="image-container ocr-logo">
-    	<img src="<?php echo StdLib::load_image_source("ocr",""); ?>" alt="Optical Character Recognition Service" />
-    </div>
-    <div class="text-container" style="float:left;display:block;width:750px;margin-bottom: 25px; font-size:14px;">
-    	<h1>Welcome to the Optical Character Recognition Service</h1>
-    	This website provides a service to help make PDFs text searchable. In addition, this service will clean, rotate and properly align the PDF files. You first upload PDFs to the service, then they are processed with our software, then they will become available for download.<br/>
+    <div>
+        <h1 class="type1">Welcome to the <?php echo Yii::app()->name; ?> Service</h1>
+        This website provides a service to help make PDFs text searchable. In addition, this service will clean, rotate and properly align the PDF files. You first upload PDFs to the service, then they are processed with our software, then they will become available for download.<br/>
     </div>
 </div>
 
 <br class="clear" />
 
-<center>
-    <form method="post">
-        <input type="hidden" name="propertyform" />
-        <table id="post-form-table">
-            <tr>
-                <th width="150px"><div <?php echo ($error == "username") ? 'class="error"' : ''; ?>> <span class="icon icon-user3"> </span> Identikey Username</div></th>
-                <td><input type="text" name="username" id="username" value="<?php @$_REQUEST["username"]; ?>" maxlength="8" /></td>
-            </tr>
-            <tr>
-                <th><div <?php echo ($error == "password") ? 'class="error"' : ''; ?>>  <span class="icon icon-key2"> </span> Identikey Password</div></th>
-                <td>
-                    <input type="password" name="password" id="password" value="" /> <img src="<?php echo StdLib::load_image_source("lock"); ?>" title="This password is passed through 128-bit AES encryption for authentication." width="16px" height="16px" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="calign"><button id="submit" class="submit" style="font-size:12px;">Continue to OCR Service &gt;</button></td>
-            </tr>
-        </table>
-    </form>
-</center>
-
-<script>
-jQuery(document).ready(function(){
-    $("#submit").button();
-    $("#submit").click(function(){
-        $(this).removeClass("ui-state-hover");
-        $(this).addClass("disabled");
-        $(this).prop("value","Logging in...");
-        $("#login-form").submit();
-        return true;
-    });
-});
-</script>
+<div class="row top-bottom-padding-3">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    <div id="credentialsBody" class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="identikeyInput">Identikey</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Identikey">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    <button id="loadMailboxesButton" class="btn-block btn btn-primary">Login</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

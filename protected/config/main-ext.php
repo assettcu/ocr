@@ -12,7 +12,7 @@ return array (
     ),
     'import'=>array(
         'application.models.*',
-        'application.models.graphics.*',
+        'application.models.objects.*',
         'application.models.system.*',
         'application.components.*',
     ),
