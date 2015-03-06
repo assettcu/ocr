@@ -4,5 +4,5 @@ protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
 themes/classic/views/
-protected/config/main.php
+protected/config/main-ext.php
 files/temp/*
