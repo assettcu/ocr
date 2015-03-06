@@ -8,100 +8,64 @@
  * 
  * @author      Ryan Carney-Mogan
  * @category    Core_Classes
- * @version     1.0.1
+ * @version     2.0.1
  * @copyright   Copyright (c) 2013 University of Colorado Boulder (http://colorado.edu)
  * 
  */
 class Flashes {
-    
-    public $buffer = "";
-    
-    /*
-     * Constructor sets up the local flashes variable
-     */
-    public function __construct() 
-    {
-        $this->flashes = Yii::app()->user->getFlashes();
-    }
     
     /**
      * Render
      * 
      * Renders the HTML output for each of the flash messages.
      * 
-     * @param   (boolean)   $closeicon  Whether to include a close icon or not
      */
-    public function render($closeicon=true) 
+    public static function render() 
     {
+        $buffer = "";
         ob_start();
-        $flashes = $this->flashes;
-        if(!empty($flashes)) {
-            foreach($flashes as $key=>$message) {
-                $icon = $this->get_icon($key);
-                $iconclose = ($closeicon===true) ? $this->get_closingicon() : "";
-                switch($key) {
-                    case "success": echo '<div class="ui-state-highlight flash ui-corner-all">'.$icon.$iconclose.$message.'</div>'; break;
-                    case "error": echo '<div class="ui-state-error flash ui-corner-all">'.$icon.$iconclose.$message.'</div>'; break;
-                    case "normal": echo '<div class="ui-widget-content flash ui-corner-all">'.$icon.$iconclose.$message.'</div>'; break;
-                    case "warning": echo '<div class="ui-state-highlight flash ui-corner-all">'.$icon.$iconclose.$message.'</div>'; break;
-                    default: echo '<div class="ui-state-active flash ui-corner-all">'.$icon.$iconclose.$message.'</div>'; break;
-                }
-                
+        $flashes = Yii::app()->user->getFlashes();
+        foreach($flashes as $key=>$message) {
+            switch($key) {
+                case "success":
+                    $buffer .= '<div class="alert dismissible alert-success"><button type="button" class="close" data-dismiss="alert">×</button><p><span class="icon icon-checkmark"> </span> '.$message.'</p></div>';
+                break;
+                case "error":
+                    $buffer .= '<div class="alert dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><p><span class="icon icon-spam"> </span> '.$message.'</p></div>';
+                break;
+                case "warning":
+                    $buffer .= '<div class="alert dismissible alert-warning"><button type="button" class="close" data-dismiss="alert">×</button><p><span class="icon icon-warning"> </span> '.$message.'</p></div>';
+                break;
+                case "info":
+                default:
+                    $buffer .= '<div class="alert dismissible alert-info"><button type="button" class="close" data-dismiss="alert">×</button><p><span class="icon icon-info"> </span> '.$message.'</p></div>';
+                break;
             }
         }
-        # Script to hide flash if the "close" icon is clicked
-        if($closeicon===true) {
-            echo '<script>jQuery(document).ready(function(){$("div.flash div.flash-close-icon").click(function(){$(this).parent().hide("blind");})});</script>';
-        }
-        $this->buffer .= ob_get_contents();
+        $buffer .= ob_get_contents();
         ob_end_clean();
         
-        echo $this->buffer;
+        echo $buffer;
     }
     
-    /**
-     * Get Icon
-     * 
-     * Returns the HTML for the icon that depends on the status of the message ("error","success","warning").
-     * 
-     * @param   (string)    $type   Type of message icon needed ("error","success","warning")
-     * @return  (string)
-     */
-    public function get_icon($type)
+    
+    
+    public static function create_flash($type,$messages="")
     {
-        $icon = "<div class='message-icon'>";
-        switch($type) {
-            case "success":     $icon .= StdLib::load_image("check-64","16px");         break;
-            case "error":       $icon .= StdLib::load_image("attention","16px");        break;
-            case "warning":     $icon .= StdLib::load_image("flag_mark_red","16px");    break;  
-            default:            $icon .= StdLib::load_image("flag_mark_blue","16px");   break;
+        if(empty($messages)) {
+            return;
         }
-        if($icon!="") {
-            $icon .= "</div>";
+        if(is_string($messages)) {
+           Yii::app()->user->setFlash($type,$messages);
         }
-        
-        return $icon;
-    }
-    
-    public function get_closingicon()
-    {
-        $icon =  "<div class='flash-close-icon' title='Close this flash'>".StdLib::load_image("close","12px")."</div>";
-        return $icon;
-    }
-    
-    public function jscript_message($message,$type,$success="",$error="") {
-        echo "
-            $.ajax({
-                type:       'POST',
-                url:        '".Yii::app()->createUrl('site/_CreateMessage')."',
-                data:       'message=".urlencode($message)."&type=".urlencode($type)."',
-                success:    function(data) {
-                    $success
-                },
-                error:      function(data) {
-                    $error
+        else if(is_array($messages)) {
+            foreach($messages as $key=>$message) {
+                if(is_array($message)) {
+                    $message = implode("<br/>",$message);
                 }
-            });
-        ";
+                $message = (StdLib::is_programmer()) ? $key.": ".$message : $message;
+                Yii::app()->user->setFlash($type,$message);
+            }
+        }
     }
 }

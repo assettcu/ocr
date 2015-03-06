@@ -1,5 +1,8 @@
 <?php
 
+ini_set("display_errors",1);
+error_reporting(E_ALL);
+
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
@@ -22,6 +25,19 @@ defined('LOCAL_IMAGE_LIBRARY') or define('LOCAL_IMAGE_LIBRARY',LOCAL_LIBRARY_PAT
 defined('WEB_LIBRARY_PATH') or define('WEB_LIBRARY_PATH','//'.WEB_ROOT.'/library/');
 defined('WEB_IMAGE_LIBRARY') or define('WEB_IMAGE_LIBRARY',WEB_LIBRARY_PATH."images/");
 
-include ROOT."/protected/models/Functions.php";
+defined('OCR_TEMP') or define('OCR_TEMP',ROOT."\\files\\temp\\");
+defined('OCR_FILE_IN') or define('OCR_FILE_IN',"C:\\web\\OCR\\scanin\\");
+defined('OCR_FILE_OUT') or define('OCR_FILE_OUT',"C:\\web\\OCR\\scanout\\");
+
+// Load up the application
 require_once($yii);
 Yii::createWebApplication($config)->run();
+
+// Require the functions file
+StdLib::Functions();
+
+// remove the following lines when in production mode
+defined('YII_DEBUG') or define('YII_DEBUG',true);
+if(YII_DEBUG) {
+    StdLib::set_debug_state("development");
+}

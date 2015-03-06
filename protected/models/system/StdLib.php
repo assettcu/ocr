@@ -10,7 +10,7 @@
  * 
  * @author      Ryan Carney-Mogan
  * @category    Core_Classes
- * @version     1.0.6
+ * @version     1.0.7
  * @copyright   Copyright (c) 2013 University of Colorado Boulder (http://colorado.edu)
  * 
  */
@@ -95,6 +95,7 @@ class StdLib
      */
     public static function make_path_web($path) {
         $path = str_replace(LOCAL_LIBRARY_PATH,WEB_LIBRARY_PATH,$path);
+        $path = str_replace("\\","/",$path);
         return $path;
     }
     
@@ -128,7 +129,7 @@ class StdLib
     {
         $image_parts = explode(":",$image);
         $image = array_pop($image_parts);
-        $subdir = implode("\\",$image_parts);
+        $subdir = implode("/",$image_parts);
         
         # Load cached version of image
         $websrc = self::get_cache($image);
@@ -214,7 +215,7 @@ class StdLib
                 if($file == ".." or $file == ".") continue;
                 
                 if(is_dir($path.$file)) {
-                    $return = self::find_image_path($image, $path.$file."\\",$depth+1);
+                    $return = self::find_image_path($image, $path.$file."/",$depth+1);
                     if($return !== false) {
                         return $return;
                     }
@@ -274,11 +275,67 @@ class StdLib
      * Note that ajax calls will only return on exit.
      * 
      */
-    public static function vdump($var,$pre=true,$die=true)
+    public static function vdump($var,$pre=true)
     {
         if($pre) echo "<pre>";
         var_dump($var);
-        if($die) exit;
+        exit;
+    }
+    
+    
+    
+    /**
+     * External Call
+     */
+    public static function external_call($url, $data = array()) 
+    {
+        $restreq = new RestRequest($url,"post");
+        $restreq->buildPostBody($data);
+        $restreq->execute();
+        return json_decode($restreq->getResponseBody(), true);
+    }
+    
+    /**
+     * Curl Post Call
+     */
+    public static function post($url, $data = array()) 
+    {
+        $ch = curl_init();
+        
+        $fields_string = array();
+        foreach($data as $key=>$value) {
+             $fields_string[] = $key.'='.json_encode($value); 
+        }
+        $fields_string = implode("&",$fields_string);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, count($data));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        
+        $result = curl_exec($ch) or die(curl_error($ch));
+        curl_close($ch);
+        
+        return $result;
+    }
+    
+    /**
+     * Programmer Only
+     */
+    public static function is_programmer()
+    {
+        return ($_SERVER["REMOTE_ADDR"] == "128.138.182.157");
+    }
+    
+    /**
+     * On Campus
+     * 
+     * Checks to see if user is on campus or not
+     */
+    public static function on_campus()
+    {
+        $requestip = $_SERVER["REMOTE_ADDR"];
+        $return = StdLib::external_call("//compass.colorado.edu/resources/api/iscampusnetwork",array("ip"=>$requestip));
+        return $return["connection"];
     }
     
     /**
@@ -336,5 +393,13 @@ class StdLib
                 error_reporting("E_ALL & ~E_DEPRECATED");
             break;
         }    
+    }
+
+    public static function pre() {
+        echo "<pre>";
+    }
+    
+    public static function Functions() {
+        require_once ROOT."/protected/models/Functions.php";
     }
 }
