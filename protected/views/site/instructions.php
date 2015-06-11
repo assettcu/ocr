@@ -4,7 +4,7 @@
     The <?php echo Yii::app()->name; ?> Service is designed to help clean, rotate, and properly align PDF scans. PDF scans that are very poor quality will not OCR properly. This is an automated system using a third-party OCR application called ABBYY. Use of this service is free for Arts &amp; Science students and faculty.
 </div>
 
-<h2>Accessing and Using the TextOverlay Service</h2>
+<h2>Accessing and Using the <?php echo Yii::app()->name; ?> Service</h2>
 <div class="article">
     <ol>
         <li>Click the Login button.</li>
@@ -19,7 +19,8 @@
 
 <h2>Uploading Multiple Files</h2>
 <div class="article">
-    If you’re using the latest version of Chrome or Firefox, you can drag a folder from your desktop into the OCR Service. The folder, all sub-folders, and files will begin uploading after you click "Start upload".
+    If you’re using the latest version of Chrome or Firefox, you can drag a folder from your desktop into the OCR Service.
+    The folder, all sub-folders, and files will begin uploading after you click "Start upload".
 </div>
 
 <h2>File Status</h2>
