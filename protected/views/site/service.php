@@ -1,5 +1,6 @@
 <?php
 StdLib::set_debug_state("Dev");
+StdLib::Functions();
 $manager = new Manager();
 $ncfiles = $manager->load_files("NC");
 $files = $manager->load_files("C");
@@ -25,7 +26,7 @@ $flashes->render();
     </div>
     
     <div class="queued-files-container ocr-container">
-        <div class="title">Queued Files</div>
+        <h2>Queued Files</h2>
         <div style="float:right;" id="countdown"></div>
         
         <div style="margin-bottom:5px;">selected: <a href="#" id="queued-mass-remove">remove</a></div>
@@ -71,7 +72,7 @@ $flashes->render();
     </div>
   
   <div class="processed-files-container">
-    <div class="title" style="font-size:24px;margin-bottom:5px;">Processed Files</div>
+    <h2>Processed Files</h2>
     <div style="margin-bottom:5px;">selected: <a href="#" id="processed-mass-remove">remove</a> | <a href="#" id="processed-mass-reprocess">reprocess</a> | <a href="#" id="processed-mass-download">download</a></div>
     <table id="processed-files">
       <thead>
@@ -105,7 +106,7 @@ $flashes->render();
 	          <td class="calign"><?=StdLib::format_date($file->date_completed,"nice");?></td>
 	          <td class="calign">
 	            <?php if($file->status!="Expired"): ?>
-	            <button class="download-button" title="Download Processed PDF" value="<?=$file->fileid?>">Download</button>
+	            <a class="download-button" title="Download Processed PDF" style="cursor:pointer;" value="<?=$file->fileid?>">Download</a>
 	            <?php else: ?>
 	            <span style="color:#a00;">Expired</span>
 	            <?php endif; ?>
@@ -165,7 +166,7 @@ jQuery(document).ready(function($){
     uploader = $('#html5_uploader').pluploadQueue({
        runtimes:        'html5',
        container:       'html5_uploader',
-       url:             '<?php echo Yii::app()->createUrl('_upload_files'); ?>',
+       url:             '<?php echo Yii::app()->createUrl('ajax/UploadFiles'); ?>',
        max_file_size:   '25mb',
        chunk_size:      '1mb',
        unique_names:    false,
@@ -184,11 +185,12 @@ jQuery(document).ready(function($){
             if(element.status == 5) {
                 semaphore = semaphore + 1;
                 $.ajax({
-                    url:        "<?php echo Yii::app()->createUrl('_add_uploaded_file'); ?>",
+                    url:        "<?php echo Yii::app()->createUrl('ajax/AddUploadedFile'); ?>",
                     data:       "filename="+escape(element["name"])+"&size="+escape(element["size"]),
                     success:    function(){
                         semaphore = semaphore - 1;
-                    }   
+                        console.log("AddUploadedFile successful");
+                    }
                 });
             }
         });
@@ -219,7 +221,7 @@ jQuery(document).ready(function($){
         });
         ids = ids.substring(0,ids.length-1);
         $.ajax({
-          "url":      "<?=Yii::app()->createUrl('_remove_files');?>",
+          "url":      "<?=Yii::app()->createUrl('ajax/RemoveFiles');?>",
           "data":     "fileids="+ids,
           "success":  function(data)
           {
@@ -255,7 +257,7 @@ jQuery(document).ready(function($){
     });
     ids = ids.substring(0,ids.length-1);
     $.ajax({
-      "url":    "<?=Yii::app()->createUrl('_reprocess_files');?>",
+      "url":    "<?=Yii::app()->createUrl('ajax/ReprocessFiles');?>",
       "data":   "fileids="+ids,
       "success":  function(data){
         window.location.reload();
@@ -271,7 +273,7 @@ jQuery(document).ready(function($){
     });
     ids = ids.substring(0,ids.length-1);
     $.ajax({
-      "url":    "<?=Yii::app()->createUrl('_remove_files');?>",
+      "url":    "<?=Yii::app()->createUrl('ajax/RemoveFiles');?>",
       "data":   "fileids="+ids,
       "success":  function(data){
         window.location.reload();
@@ -330,7 +332,7 @@ var flag = false;
 function updateFiles()
 {
   $.ajax({
-    "url":      "<?=Yii::app()->createUrl('_update_files');?>",
+    "url":      "<?=Yii::app()->createUrl('ajax/UpdateFiles');?>",
     "dataType": "JSON",
     "success":  function(data){
       flag = true;
@@ -344,7 +346,7 @@ function updateFiles()
 				}
           });
           $.ajax({
-            "url":      "<?=Yii::app()->createUrl('_load_processed_files');?>",
+            "url":      "<?=Yii::app()->createUrl('ajax/LoadProcessedFiles');?>",
             "data":     "fileid="+key,
             "success":   function(data){
               $("#processed-empty").remove();

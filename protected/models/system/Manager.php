@@ -108,6 +108,27 @@ class Manager
     
     return $this->files;
   }
+
+  public function load_file_by_id($id) 
+  {
+    $this->files = array();
+    $conn = Yii::app()->db;
+    $query = "
+      SELECT    fileid
+      FROM      {{files}}
+      WHERE     fileid = :id;
+    ";
+    $command = $conn->createCommand($query);
+    $command->bindParam(":id",$id);
+    $result = $command->queryAll();
+    
+    if(!$result or empty($result)) return array();
+    
+    foreach($result as $row)
+      $this->files[$row["fileid"]] = new FilesObj($row["fileid"]);
+    
+    return $this->files;
+  }
   
   public function update_files()
   {
