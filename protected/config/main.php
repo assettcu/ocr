@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 $mainconfig = array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'TextOverlay',
+	'name'=>'Readify! OCR',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

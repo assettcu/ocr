@@ -29,6 +29,7 @@ defined('OCR_TEMP') or define('OCR_TEMP',ROOT."\\files\\temp\\");
 defined('OCR_FILE_IN') or define('OCR_FILE_IN',"C:\\web\\OCR\\scanin\\");
 defined('OCR_FILE_OUT') or define('OCR_FILE_OUT',"C:\\web\\OCR\\scanout\\");
 
+
 // Load up the application
 require_once($yii);
 Yii::createWebApplication($config)->run();
